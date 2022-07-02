@@ -20,7 +20,7 @@ blue = (0, 0, 255)
 
 pygame.init()
 dis = pygame.display.set_mode((dis_width, dis_height))
-pygame.display.set_caption('Snake by VsKesha')
+pygame.display.set_caption('Змійка by VsKesha')
 clock = pygame.time.Clock()
 
 def get_food(snake):
@@ -33,14 +33,14 @@ def get_food(snake):
 
 def your_score(score=0):
 	score_font = pygame.font.SysFont("comicsansms", 35)
-	value = score_font.render("Score: " + str(score), True, yellow)
+	value = score_font.render("Рахунок: " + str(score), True, yellow)
 	dis.blit(value, [0, 0])
 	pygame.display.update()
 
 def your_speed(speed=1):
 	speed_font = pygame.font.SysFont("comicsansms", 35)
-	value = speed_font.render("Speed: " + str(speed), True, yellow)
-	dis.blit(value, [dis_width - 110, 0])
+	value = speed_font.render("Швидкість: " + str(speed), True, yellow)
+	dis.blit(value, [dis_width - 180, 0])
 	pygame.display.update()
 
 def show_message(msg, color, coords=[dis_width/7, dis_height/3], font_size=30):
@@ -154,13 +154,13 @@ def game_menu():
 	pygame.draw.rect(menu_bg, 'grey20', [0, 0, dis_width, dis_height])
 	menu_bg.set_alpha(200)
 	dis.blit(menu_bg, [0, 0])
-	show_message("SNAKE", "grey5", [dis_width / 2 - 100, border], 80)
+	show_message("ЗМІЙКА", "grey5", [dis_width / 2 - 100, border], 80)
 	show_message("by vskesha", "dark green", [dis_width / 2 + 100, border + 50], 30)
 	x = dis_width / 2 - 200
 	y = dis_height / 2
-	show_message("Choose your speed:", 'black', [x, y], 50)
-	show_message('"1" - "9"  to set speed', 'black', [x, y +50], 30)
-	show_message('"A" - auto adjust', 'black', [x, y + 80], 30)
+	show_message("Вибери швидкість:", 'black', [x, y], 50)
+	show_message('"1" - "9" вибрати швидкість', 'black', [x, y +50], 30)
+	show_message('"A" - автоматично', 'black', [x, y + 80], 30)
 
 	while True:
 		for event in pygame.event.get():
@@ -208,9 +208,9 @@ def game_pause():
 	paused = True
 	x = dis_width / 4
 	y = dis_height / 3
-	show_message("GAME PAUSED!", red, [x, y] , 50)
-	show_message("Press C to continue", red, [x, y + 65], 35)
-	show_message("Press Q to quit", red, [x, y + 100], 35)
+	show_message("ПАУЗА!", red, [x, y] , 50)
+	show_message("Нажми С для продовження", red, [x, y + 65], 35)
+	show_message("Нажми Q щоб вийти", red, [x, y + 100], 35)
 	
 	while paused:
 		for event in pygame.event.get():
@@ -231,9 +231,9 @@ def game_over():
 	while True:
 		x = dis_width / 4
 		y = dis_height / 3
-		show_message("GAME OVER!", red, [x, y] , 50)
-		show_message("Press C to play again", red, [x, y + 65], 35)
-		show_message("Press Q to quit", red, [x, y + 100], 35)
+		show_message("ПОРАЗКА!", red, [x, y] , 50)
+		show_message("Нажми С - нова гра", red, [x, y + 65], 35)
+		show_message("Нажми Q - вийти", red, [x, y + 100], 35)
 
 		for event in pygame.event.get():
 			if event.type == pygame.QUIT:
@@ -301,7 +301,7 @@ def gameLoop():
 		your_speed(snake_speed)
 				
 		if x1 == foodx and y1 == foody:
-			show_message("Yammy", 'yellow', [foodx + snake_block, foody + snake_block])
+			show_message("Нямм", 'yellow', [foodx + snake_block, foody + snake_block])
 			foodx, foody = get_food(snake_List)
 			Length_of_snake += 1
 			Score += snake_speed
